@@ -1,2 +1,2 @@
 # test
-https://ecoriadu59.github.io/Jeux/very dark/
+https://ecoriadu59.github.io/Jeux/very%20dark/play.htm
