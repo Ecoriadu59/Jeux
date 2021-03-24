@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<title>
+A Very Very dark Affaires : Option
+</title>
+<link rel="stylesheet" href="./avvda.css" type="text/css" media="screen" id="stylebase" title="avvdabase">
+<link rel="stylesheet" 
+href="./fx/fx.css" type="text/css" id="stylefx">
+<script type="text/javascript" src="./fx/ajaxmi.js"></script>
+
+<style>
+#transp {opacity:0.4};
+#imgtitle {position: 'absolute'; opacity: 0.5};
+#thenotice {position: 'absolute'; opacity: 0};
+</style>
+</head>
+<body bgcolor="#000000">
+<div id="transp">
+<img src="./imgtitle.png" id="imgtitle"></img>
+</div>
+<div id="presmenu" class='center'>
+<p style="margin-bottom: 0cm">
+<a href ="../pres.htm" id="jouer" class='pres'>Menu Titre</a>
+</p>
+</div>
+<div id='thenotice'>
+<p></p><br>
+<form name='opt' id='opt'>
+<fieldset>
+<legend>Option Graphique</legend>
+<input type="radio" name="def" value="val1" id="val1" /> <label for="val1">376X760</label><br />
+<input type="radio" name="def" value="val2" id="val2" /> <label for="val2">476X860</label><br />
+<input type="radio" name="def" value="val3" id="val3" /> <label for="val3">576X960</label><br />
+<input type="radio" name="def" value="val4" id="val4"/> <label for="val4">676X1060</label><br />
+<input type="radio" name="def" value="val5" id="val5"/> <label for="val5">720X1280</label><br />
+<p>
+<a href='#'  onclick="generdef()">Valider</a>
+</p>
+</fieldset>
+</form>
+</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+//////////////:fonctions de mis en page//////////////////:
+//variable de taille max
+var hmax = 576;
+var wmax = 960;
+
+
+//variables de points d'origine de mise en page
+var pointox = Math.round(document.body.clientHeight / 6);
+var pointoy = Math.round((document.body.clientWidth / 2) - (wmax / 2))
+
+var hbmax = document.body.clientHeight; //hauteur max du body
+var wbmax = document.body.clientWidth; //largeur max du body
+
+//position de l'image menu
+document.body.style.fontSize = Math.round(hmax / 24);
+
+document.getElementById('imgtitle').style.position = 'absolute'
+document.getElementById('imgtitle').style.top = pointox;
+document.getElementById('imgtitle').style.left = pointoy;
+document.getElementById('imgtitle').style.width = wmax;
+document.getElementById('imgtitle').style.height = hmax;
+document.getElementById('imgtitle').style.zIndex = 5;
+
+document.getElementById('thenotice').style.opacity = 0;
+document.getElementById('thenotice').style.position = 'absolute'
+document.getElementById('thenotice').style.top = 35;
+document.getElementById('thenotice').style.left = pointoy;
+document.getElementById('thenotice').style.width = wmax;
+document.getElementById('thenotice').style.height = hmax;
+document.getElementById('thenotice').style.zIndex = 6;
+//document.getElementById('thenotice').style.display = 'none';
+//document.getElementById('thenotice').style.visibility = 'hidden';
+
+
+document.getElementById('presmenu').style.opacity = 0;
+document.getElementById('presmenu').style.position = 'absolute'
+document.getElementById('presmenu').style.top = 35;
+document.getElementById('presmenu').style.left = Math.round(pointoy + (wmax/2.5));
+document.getElementById('presmenu').style.width = Math.round(wmax / 4);
+document.getElementById('presmenu').style.height = Math.round(hmax / 4);
+document.getElementById('presmenu').style.zIndex = 7;
+
+//effet css3/js fx.css, ajaxmini2.js/:
+anni("imgtitle", "zoomapper", 'at');
+setTimeout('anni("presmenu", "apper", "at")', 1400);
+setTimeout('anni("thenotice", "apper", "at")', 2400);
+</script>
+
+
+
+<script>
+// Détection du support
+if(typeof localStorage=='undefined') {alert("Vos preferences ne seront pas sauvegardées (localStorage non supporté)")}
+//creer une clef
+function generdef(){
+var val = null;
+if (document.getElementById("val5").checked == true){
+val = "val5"
+}
+if (document.getElementById("val4").checked == true){
+val = "val4"
+}
+if (document.getElementById("val3").checked == true){
+val = "val3"
+}
+if (document.getElementById("val2").checked == true){
+val = "val2"
+}
+if (document.getElementById("val1").checked == true){
+val = "val1"
+}
+localStorage.setItem("avvdadef", val);
+//alert(localStorage.avvdadef)
+}
+
+//controle de l'option enregisté et creation d'une clé si besoin
+var valcheck = localStorage.avvdadef;
+var ctrlvalgraph = 0;
+if (
+(document.getElementById("val1").value  == valcheck)||
+(document.getElementById("val2").value  == valcheck)||
+(document.getElementById("val3").value  == valcheck)||
+(document.getElementById("val4").value == valcheck)||
+(document.getElementById("val5").value == valcheck)) {ctrlvalgraph = 1};
+
+
+if (ctrlvalgraph == 1){
+document.getElementById(valcheck).checked = 1;
+}
+if (ctrlvalgraph == 0){
+localStorage.setItem("avvdadef", "val3");
+document.getElementById("val3").checked = 1;
+}
+
+
+
+
+</script>
+</body>
+</html>

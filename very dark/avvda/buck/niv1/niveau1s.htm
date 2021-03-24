@@ -1,0 +1,137 @@
+Unlucky' buck, it's just a Zombie'touch!
+<script language = 'javascript'>
+
+////////////////////////////////////////////////////////////////////
+cutscene = new Array();
+enchapter = new Array();
+statue = new Array();
+dialchapt = null;
+//definition du niveau
+
+
+function niveau1s()
+{
+ground = new Array();
+monster = new Array();
+piegea = new Array();
+
+specialvictTXT = new Array();
+specialvictButin = new Array();
+coffre = new Array();
+coffretrg = new Array();
+enchapter = new Array();
+cutscene = new Array();
+
+
+
+niveauname = 'niveau1'
+graphcoul = "./vvdaimg/crypt/"
+graphexta= ".png";
+
+posjoueur = 'vh'
+document.getElementById('couloir').src = graph;
+groundstop = 140;
+groundsup = 10;
+var radstop = 49;
+var radsup = 7;
+makeatables('carte', 'cartej', 'cell', 'cellj', groundstop, groundsup);
+makeatables('radar', 'radarj', 'cellrad', 'cellradj', radstop, radsup);
+lradar = 7;
+
+ground[114] = 'coul';
+
+ground[104] = 'coul';
+
+ground[94] = 'coul';
+
+ground[93] = 'coul';
+
+ground[92] = 'coul';
+
+ground[82] = 'coul';
+
+ground[72] = 'coul';
+
+ground[62] = 'coul';
+
+ground[61] = 'coul';
+
+ground[52] = 'coul';
+
+ground[95] = 'coul';
+
+ground[96] = 'coul';
+
+ground[86] = 'coul';
+
+ground[76] = 'coul';
+
+ground[66] = 'coul';
+
+ground[65] = 'coul';
+
+ground[64] = 'coul';
+
+ground[56] = 'coul';
+
+ground[46] = 'coul';
+
+ground[47] = 'coul';
+
+ground[48] = 'coul';
+
+monster[82] = 'serpent';
+
+monster[65] = 'rats';
+
+monster[94] = 'rats';
+
+monster[92] = 'rats';
+
+monster[86] = 'serpent';
+
+coffre[52] = 'coffre';
+specialvictTXT[52] = 'Des munitions... un peu short Mitch.'
+specialvictButin[52] = '<br><a href="#" id="specia" onclick="gchgbonus = 8; rch(chgbonus); document.getElementById(' + "'specia'" + ' ).style.visibility = ' + "'hidden'" + '"> cartouches showgun acier</a><br>';
+
+
+
+cutscene[56] = './buck/niv1/ali.htm';
+monster[56] = 'alligator';
+
+enchapter[48] = './buck/niv1/niveau1bb.htm';
+cutscene[104] = './buck/niv1/poque.htm';
+
+casejoueur = 114;
+posjoueur = orivalue[0];
+radarjoueur = 24;
+greenpos = 'cell' + casejoueur;
+jpos = 'cellj' + casejoueur;
+
+greenposR = 'cellrad' + radarjoueur;
+jposR = 'cellradj' + radarjoueur;
+
+document.getElementById(jpos).style.visibility = 'visible';
+document.getElementById(greenpos).src = zerofog.src;
+document.getElementById(jposR).style.visibility = 'visible';
+document.getElementById(greenposR).src = zerofog.src;
+
+ctrlcoul();dtcoul();defcoul();
+buck()
+givarm(6);
+chgbonus = 8; rch(chgbonus);
+showgun()
+
+}
+
+niveau1s();
+ctrlcoul();
+preloadground()
+document.getElementById('couloir').src = graph;
+ctrlcoul();
+avance();
+</script>
+
+
+
+

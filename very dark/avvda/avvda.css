@@ -1,0 +1,143 @@
+
+.hand {cursor: pointer}
+.thetitle { 
+ color:orange;  font-size:120%
+	}
+.invtitle { 
+color:orange;  font-size:120%; vertical-align:top 
+	}
+.trmninv{height:30px; width:380px; text-align:left; vertical-align:top; }
+.tdmninv {width:120px; height:30px; text-align:left; vertical-align:top}
+.tdmninvimg {
+	width:36px; height:30px; vertical-align:top
+	}
+body {color:orange; background-color:black;  font-size:40px}
+
+table {font-size:70%; color:orange}
+#thelevel {position:absolute; top:1px; left:2px; z-index:2;}
+#retourmenu {position:absolute; top:70px; left:2px; z-index:2; font-size:80%; color:orange}
+#inventaire {position:absolute; top:350px; left:400px;font-size:12px }
+#blocenemi {position:absolute; top:80px; left:80px; color:orange; background-color:red;background:url(./vvdaimg/fond.png); vertical-align:top; border:5PX; border-color:orange;
+-webkit-box-shadow: 0px 5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: 0px 5px 5px rgba(0,0,0,.8);
+-o-box-shadow: 0px 5px 5px rgba(0,0,0,.8);
+box-shadow: 0px 5px 5px rgba(0,0,0,.8)
+}
+#blocplayer {position:absolute; top:200px; left:80px; color:orange; vertical-align:top}
+
+#divshowmal {position:absolute; top:170px; left:100px;width:380px; height:280px; background:url(./vvdaimg/maloup.png); 
+	z-index:25; text-align:center;font-size:20px}
+#divshowdama {position:absolute; top:200px; left:80px; color:orange; vertical-align:top;}
+#divshowdamaene {position:absolute; top:0px; left:80px; color:orange; vertical-align:top;}
+
+#bloccurmal {position:relative; color:orange;top:0px; left:0px;}
+#blocarm {position:relative; color:orange;top:0px; left:0px; }
+#curent {position:absolute; top:480px; left:80px; overflow:hidden; float:left; background:url(./vvdaimg/fond.png) black; border:5PX; border-color:orange; 
+-webkit-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-o-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+visibility:visible}
+#blocinventaire {position:absolute; top:480px; left:80px;  overflow:hidden; float:left; background:url(./vvdaimg/fond.png) black;
+	-webkit-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-o-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+	}
+#blocartefact {position:absolute; top:480px; left:80px;  overflow:hidden; float:left;background:url(./vvdaimg/fond.png) black;
+-webkit-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-o-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+	}
+#blocmalef {position:absolute; top:480px; left:80px;  overflow:hidden; float:left;background:url(./vvdaimg/fond.png) black;
+-webkit-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+-o-box-shadow: -5px -5px 5px rgba(0,0,0,.8);
+box-shadow: -5px -5px 5px rgba(0,0,0,.8);	
+	}
+A {color:orange; border:2px; border-color:orange}
+
+#cdmov {position:relative;}
+#mninv {position:absolute; top:480px; left:80px; vertical-align:top; width:30px; width:380px;}
+
+
+#blocdebug {position:absolute; top:200px; left:880px; color:white; background-color:GREY; border-radius:13px; border: 5px solid orange; visibility:hidden}
+
+#defaite {position:absolute; top:150px; left:100px; width:380px; height:280px; visibility:hidden; background-color:black; z-index:22; border: 5px solid orange;
+text-align:center; opacity:0; display:none}
+#victoire {position:absolute; top:150px; left:100px;width:380px; height:280px; visibility:hidden; background-color:black; z-index:8;border:5PX; border: 5px solid orange;
+text-align:center; opacity:0; 
+ -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+-moz-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+-o-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+display:none}
+#info{position:relative; display:none}
+
+#tabl {}
+#tabl2 {}
+
+
+#tabinven2 {}
+#tabinven3 {}
+#tabinven4 {}
+
+#stockarm {width:180px; height:60px; overflow:hidden; background:url(./vvdaimg/fond.png)}
+#stockmal {width:360px; height:120px; overflow:hidden; background:url(./vvdaimg/fond.png)}
+.bmal {width:300px; height:60px;}
+#story {position:absolute; top:150px; left:100px; width:170px; height:50px; background-color:black; 
+text-align:justify;
+margin-right:300px;
+overflow:auto; 
+float:left;
+z-index:21; visibility:visible; opacity:1; display:block}
+
+#txtstory { visibility:visible; opacity:0;
+	overflow:auto; 
+float:left; display:block}
+
+#caractere {color:orange; font-family:Times New Roman; border-color:orange; border: 3px solid orange; 
+-webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+-moz-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+-o-box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+box-shadow: 10px 10px 10px rgba(0,0,0,.8);
+opacity:1; display:block; visibility:visible};
+#bulletNb {position:relative; width:50px; height:36px}
+
+#armact{position:absolute; top:200px; left:80px; color:orange; vertical-align:top}
+#fondscreen {position:absolute; top:150px; left:100px; width:170px; height:50px; ; z-index:4; background:url(./vvdaimg/fond0.png);
+#bigtitre {color:orange; font-weight:16px; font-family:Times New Roman}
+#titre {color:orange; font-family:Times New Roman}
+#text1 {color:orange; font-family:Times New Roman}
+#dalert {position:absolute; top:150px; left:100px;width:380px; height:280px; visibility:hidden; background-color:black; z-index:26} 
+#disen {position:absolute; color:orange; font-family:Times New Roman};
+#carte {position:relative; top:0};
+#cartej {position:relative; top:0};
+#geocarte {position:absolute};
+#dirtxt {color:orange};
+#vcttitre {text-align:center};
+#masterbloc{position:relative; visibility:hidden;
+-webkit-box-shadow: 0px -5px 5px rgba(0,0,0,.8);
+-moz-box-shadow: 0px -5px 5px rgba(0,0,0,.8);
+-o-box-shadow: 0px -5px 5px rgba(0,0,0,.8);
+box-shadow: 0px -5px 5px rgba(0,0,0,.8);
+}
+
+#verytitle { font-family: 'Times New Roman'; color:orange;  font-size:220%}
+#playerimg{width:80px; height:60px};
+#globaldiv{};
+legend {font-family: "Times New Roman"; 
+color: orange;
+font-weight: bold ;
+}
+fieldset
+{
+border-color: orange;  color: orange;
+}
+
+	
+	
+	
+	
+	

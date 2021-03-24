@@ -1,0 +1,240 @@
+Unlucky' buck, it's just a Zombie'touch!
+<script language = 'javascript'>
+////////////////////////////////////////////////////////////////////
+cutscene = new Array();
+enchapter = new Array();
+statue = new Array();
+dialchapt = null;
+
+//definition du niveau
+
+function niveau1bb()
+{
+
+ground = new Array();
+monster = new Array();
+piegea = new Array();
+
+specialvictTXT = new Array();
+specialvictButin = new Array();
+coffre = new Array();
+coffretrg = new Array();
+enchapter = new Array();
+cutscene = new Array();
+posjoueur = 'vh'
+
+
+niveauname = 'niveau1bb'
+graphcoul = "./vvdaimg/crypt/"
+graphexta= ".png";
+posjoueur = 'vh';
+document.getElementById('couloir').src = graph;
+groundstop = 360;
+groundsup = 20;
+var radstop = 49;
+var radsup = 7;
+makeatables('carte', 'cartej', 'cell', 'cellj', groundstop, groundsup);
+makeatables('radar', 'radarj', 'cellrad', 'cellradj', radstop, radsup);
+lradar = 7;
+
+ground[308] = 'coul';
+
+ground[288] = 'coul';
+
+ground[268] = 'coul';
+
+ground[248] = 'coul';
+
+ground[247] = 'coul';
+
+ground[246] = 'coul';
+
+ground[245] = 'coul';
+
+ground[244] = 'coul';
+
+ground[243] = 'coul';
+
+ground[242] = 'coul';
+
+ground[222] = 'coul';
+
+ground[202] = 'coul';
+
+ground[182] = 'coul';
+
+ground[162] = 'coul';
+
+ground[224] = 'coul';
+
+ground[204] = 'coul';
+
+ground[184] = 'coul';
+
+ground[164] = 'coul';
+
+ground[144] = 'coul';
+
+ground[226] = 'coul';
+
+ground[206] = 'coul';
+
+ground[186] = 'coul';
+
+ground[166] = 'coul';
+
+ground[146] = 'coul';
+
+ground[143] = 'coul';
+
+ground[142] = 'coul';
+
+ground[249] = 'coul';
+
+ground[250] = 'coul';
+
+ground[251] = 'coul';
+
+ground[252] = 'coul';
+
+ground[230] = 'coul';
+
+ground[210] = 'coul';
+
+ground[190] = 'coul';
+
+ground[170] = 'coul';
+
+ground[150] = 'coul';
+
+ground[253] = 'coul';
+
+ground[233] = 'coul';
+
+ground[213] = 'coul';
+
+ground[193] = 'coul';
+
+ground[173] = 'coul';
+
+ground[153] = 'coul';
+
+ground[133] = 'coul';
+
+ground[194] = 'coul';
+
+ground[195] = 'coul';
+
+ground[196] = 'coul';
+
+ground[113] = 'coul';
+
+ground[114] = 'coul';
+
+ground[115] = 'coul';
+
+ground[116] = 'coul';
+
+ground[96] = 'coul';
+
+ground[76] = 'coul';
+
+ground[56] = 'coul';
+
+piegea[204] = '';
+
+ground[123] = 'coul';
+
+ground[103] = 'coul';
+
+ground[83] = 'coul';
+
+ground[63] = 'coul';
+
+porteA[202] = 'porte';
+porteAtype[202] = 'Sale';
+
+porteA[204] = 'porte';
+porteAtype[204] = 'Sale';
+
+porteA[103] = 'porte';
+porteAtype[103] = 'Acier';
+
+coffre[76] = 'coffre';
+
+coffre[195] = 'coffre';
+
+
+coffre[170] = 'coffre';
+
+
+monster[268] = 'rats';
+
+monster[246] = 'serpent';
+
+monster[186] = 'serpent';
+
+monster[243] = 'serpent';
+
+monster[162] = 'rats';
+
+monster[164] = 'rats';
+
+monster[190] = 'rats';
+
+monster[251] = 'serpent';
+
+monster[153] = 'serpent';
+
+monster[114] = 'rats';
+
+
+//cutscene[172] = './buck/niv1/zomb.htm';
+//cutscene[162] = './buck/niv1/zombend.htm';
+//ingame[33] = './buck/niv1/end.htm';
+//exit[33] = 'sortiea';
+
+//coffre[188] = 'coffre';
+//coffre[136] = 'coffre';
+
+specialvictTXT[76] = 'Une clef, elle doit bien ouvrir quelque chose.';
+viobj[76] = '<br><a href="#" id="speciaa" onclick="' + 'givkey(' + "'Acier'" +    ');' +  "document.getElementById(" + "'speciaa'" + ' ).style.visibility = ' + "'hidden'; viobj[76] = undefined"  + '">Clef Acier</a><br>'; 
+specialvictButin[76]  = viobj[76];
+
+specialvictTXT[195] = 'Une clef, elle doit bien ouvrir quelque chose.';
+viobj[195] = '<br><a href="#" id="speciab" onclick="' + 'givkey(' + "'Sale'" +    ');' +  "document.getElementById(" + "'speciab'" + ' ).style.visibility = ' + "'hidden'; viobj[195] = undefined"  + '">Clef Sale</a><br>'; //variable de 'coffre et autre'
+specialvictButin[195]  = viobj[195];
+
+specialvictTXT[170] = 'Des munitions... Thank s Mtch.'
+specialvictButin[170] = '<br><a href="#" id="specia" onclick="gchgbonus = 8; rch(chgbonus); document.getElementById(' + "'specia'" + ' ).style.visibility = ' + "'hidden'" + '"> cartouches showgun acier</a><br>';
+specialvictButin[170] += '<br><a href="#" id="specia1" onclick="gchgbonus = 8; rch(chgbonus); document.getElementById(' + "'specia1'" + ' ).style.visibility = ' + "'hidden'" + '"> cartouches showgun acier</a><br>';
+
+enchapter[83] = './buck/niv1/niveau1bs.htm';
+
+
+casejoueur = 288;
+
+radarjoueur = 24;
+greenpos = 'cell' + casejoueur;
+jpos = 'cellj' + casejoueur;
+
+greenposR = 'cellrad' + radarjoueur;
+jposR = 'cellradj' + radarjoueur;
+
+document.getElementById(jpos).style.visibility = 'visible';
+document.getElementById(greenpos).src = zerofog.src;
+document.getElementById(jposR).style.visibility = 'visible';
+document.getElementById(greenposR).src = zerofog.src;
+
+
+avancefps();
+ctrlcoul();dtcoul();defcoul();
+
+}
+niveau1bb();
+ctrlcoul();
+preloadground()
+</script>
+
+
+

@@ -1,0 +1,1401 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+<title>A Very Very Dark Affaires
+</title>
+<link rel="stylesheet" 
+href="./fx/fx.css" 
+type="text/css" id="stylefx">
+<link rel="stylesheet" 
+href="./avvda.css" 
+type="text/css" media="screen" id="stylebase" title="avvdabase">
+</head>
+<body>
+<script type="text/javascript" src="./fx/ajaxmi.js"></script>
+<script type="text/javascript" src ="./js/dialogue.js"></script>
+<div id="vers">1.3066</div>
+
+
+<div id="globaldiv">
+<div id = 'thelevel'>
+</div>
+<div id="retourmenu">
+<a href ="../pres.htm" id="jouer" class='pres'>Menu Titre</a>
+</div>
+<div id="victoire">
+</div>
+<div id="defaite">
+</div>
+<div id="story" >
+<div id="txtstory" >
+</div>
+</div>
+<div id="divshowmal" style='display:none'>
+
+</div>
+<div id="divshowdamaene" style='display:none'>
+
+</div>
+<div id="divshowdama" style='display:none'>
+
+</div>
+<div id="blocenemi">
+<span id="enemi"></span><br>
+<span id="disen"></span><br>
+</div>
+<div id="blocplayer">
+	<span id="player"></span>
+	<span id="playerdammage"></span>	
+</div>
+
+
+<div id="armact">
+<span id="activweap"></span> / <span id="bulletselect"></span>
+</div>
+<div id="curent">
+
+	<div id="blocarm">
+	<img src='./vvdaimg/interfross/fuite.png' border='0' id='fuite' onclick="fuire()" class="hand" onmouseover="affichinfo('Reculer, fuire') " onmouseout="zeroinfo()" />
+	<img src='./vvdaimg/interfross/bulletmoins.png' border='0'id='bulletms' onclick="bulletmoins()" class="hand" onmouseover="affichinfo('Moins de balles dans le chargeur.') " onmouseout="zeroinfo()" />
+	<span id="bulletNb"></span>
+	<img src='./vvdaimg/interfross/bulletplus.png' border='0' id='bulletpls' onclick="bulletplus()" class="hand" onmouseover="affichinfo('Plus de balles dans le chargeur.') " onmouseout="zeroinfo()" />
+	<img src='./vvdaimg/interfross/bulletmax.png' border='0' id='bulletmx' onclick="bulletmax()" class="hand" onmouseover="affichinfo('Remplire au max le chargeur.') " onmouseout="zeroinfo()"/>
+	<img src='./vvdaimg/interfross/attak.png' border='0'id='attak' onclick="affipldammageone(); onechgenga()" class="hand" onmouseover="affichinfo('Tirer une balle ou donner un coups.') " onmouseout="zeroinfo()" />
+	<img src='./vvdaimg/interfross/attakmax.png' border='0'id='attakmax' onclick="affipldammage(); zerochgenga()" class="hand" onmouseover="affichinfo('Vider son chargeur sur la cible, se dechainner') " onmouseout="zeroinfo()" />
+	
+	</div>
+	<!--blac d'acces rapide au malifices -->
+		<div id="bloccurmal">
+<table id='malacces'>
+<tr>
+<td><span id="blocmalef0a">
+
+</span></td><td>
+<span id="blocmalef1a">
+
+</span></td><td>
+<span id="blocmalef2a">
+
+</span></td>
+<td>
+<span id="blocmalef3a">
+
+</span></td>
+<td>
+<span id="blocmalef4a">
+
+</span></td>
+<td>
+<span id="blocmalef5a">
+
+</span></td>
+</tr>
+</table>
+	</div>
+<!-- bloc d'acces rapide au inventaire -->
+	<div id="bloccurart">
+<table id='artacces'>
+<tr>
+<td><span id="blocart0a">
+
+</span></td><td>
+<span id="blocart1a">
+
+</span></td><td>
+<span id="blocartf2a">
+
+</span></td>
+<td>
+<span id="blocart3a">
+
+</span></td>
+<td>
+<span id="blocart4a">
+
+</span></td>
+<td>
+<span id="blocart5a">
+
+</span></td>
+</tr>
+</table>
+	</div>
+
+
+<span id="info"><span>
+</div>
+<div id="cdmov" onmouseover="affichinfo('Direction.') " onmouseout="zeroinfo()">
+<table>
+<tr>
+<td></td><td>
+<a href="#" onclick="posjoueur = orivalue[0];actmov();"> 
+<img src='./vvdaimg/interfross/flechh.png' border='0' id='flechh' /> </a>
+</td><td></td></tr>
+<tr>
+<td><a href="#" onclick="posjoueur = orivalue[1];actmov();"> 
+<img src='./vvdaimg/interfross/flechg.png' border='0' id='flechg'  />
+</a></td><td></td><td>
+<a href="#" onclick="posjoueur = orivalue[2];actmov();">
+<img src='./vvdaimg/interfross/flechd.png' border='0' id='flechd' /> </a>
+</td></tr>
+<tr>
+<td></td><td>
+<a href="#" onclick="posjoueur = orivalue[3];actmov();">
+<img src='./vvdaimg/interfross/flechb.png' border='0' id='flechb'  />
+</a></td><td></td></tr>
+</table>
+</div>
+
+
+
+
+<!--bloc regroupant inventaire artefact malefice -->
+<div id="masterbloc">
+<div id="blocinventaire">
+<a href="#" onclick="moveindex(0); lastval = 0"><img src='./vvdaimg/interfross/bullet.png' border='0' /></a><span class='invtitle'>Armes & Munitions.</span><br>
+<table border="0">
+<tr><td>
+<a href="#" onMousedown='inteRight("stockarm")' onMouseup='clearinterd()' onMouseout='clearinterd()'><img src='./vvdaimg/interfross/left.png' border='0' /></A>
+</td><td>
+<div id="stockarm">
+<table id="tabinven2"><tr>
+<td valign = 'top'>
+<span id="blocarminv1">
+</span>
+<span id="chgf"></span>
+<span id="chgfs"></span>
+</td><td valign = 'top'>
+<span id="blocarminv2">
+</span>
+<span id="chgbiggun"></span>
+<span id="chgbigguns"></span>
+</td><td valign = 'top'>
+<span id="blocarminv3">
+</span>
+<span id="chgbdefer"></span>
+</td><td valign = 'top'>
+<span id="blocarminv4">
+</span>
+
+<span id="argne"></span>
+</td><td valign = 'top'>
+<span id="blocarminv5">
+</span>
+<span id="chgglockacier"></span>
+<span id="chgglockargent"></span>
+
+
+
+</td><td valign = 'top'>
+<span id="blocarminv6">
+</span>
+<span id="chgshowacier"></span>
+
+</span>
+
+</td></tr>
+</Table>
+</div>
+</td><td>
+<a href="#" onMousedown='interLeft("stockarm")' onMouseup="clearinterd('stockarm')" onMouseout="clearinterd('stockarm')"><img src='./vvdaimg/interfross/right.png' border='0' /></A>
+</td></tr></table>
+</div>
+<div id="blocartefact">
+<a href="#" onclick="moveindex(1); lastval = 1"><img src='./vvdaimg/interfross/artef.png' border='0' /></a><span class='invtitle'>Artefact.</span><br>
+<table id='tabinven3'>
+<tr>
+<td><span id="blocobj0">
+
+</span></td><td>
+<span id="blocobj1">
+
+</span></td><td>
+<span id="blocobj2">
+
+</span></td>
+<td>
+<span id="blocobj3">
+
+</span></td>
+</tr><tr>
+<td>
+<span id="blocobj4">
+
+</span></td>
+<td>
+<span id="blocobj5">
+
+</span></td>
+<td>
+<span id="blocobj6">
+
+</span></td>
+</tr>
+</table>
+</div>
+
+<div id="blocmalef">
+<a href="#" onclick="moveindex(2); lastval = 2"><img src='./vvdaimg/interfross/malef.png' border='0' /></a><span class='invtitle'>Malefices.</span><br>
+<table>
+<tr>
+<td>
+<a href="#" onMousedown='interRight("stockmal")' onMouseup="clearinterl()" onmouseout="clearinterl()"><img src='./vvdaimg/interfross/left.png' border='0' /></A>
+</td><td>
+<div id="stockmal">
+<table id='tabinven4'>
+<tr>
+<td class='bmal'><div id="blocmalef0" class='bmal'>
+
+</div></td><td class='bmal'>
+<div id="blocmalef1" class='bmal'>
+
+</div></td><td class='bmal'>
+<div id="blocmalef2" class='bmal'>
+
+</div></td>
+<td class='bmal'>
+<div id="blocmalef3" class='bmal'>
+
+</div></td>
+<td class='bmal'>
+<div id="blocmalef4" class='bmal'>
+
+</div></td>
+<td class='bmal'>
+<div id="blocmalef5" class='bmal'>
+
+</div></td>
+</tr>
+</table>
+</div>
+</td><td>
+<a href="#" onMousedown='interLeft("stockmal")' onMouseup='clearinterl()' onmouseout='clearinterl()'><img src='./vvdaimg/interfross/right.png' border='0' /></A>
+</td><tr>
+</table>
+</div>
+</div>
+<!-- fin de div masterbloc-->
+<table id="mninv">
+<tr class='trmninv'>
+<td class='tdmninvimg'><a href = "#" onclick="moveindex(0); lastval = 0"><img src='./vvdaimg/interfross/bullet.png' border='0' id="bullet" onmouseover="affichinfo('Armes et munitions.') " onmouseout="zeroinfo()" /></a></td>
+<td class='tdmninvimg'><a href = "#" onclick="moveindex(1); lastval = 1;"><img src='./vvdaimg/interfross/artef.png' border='0' id="artef" onmouseover="affichinfo('Inventaire.') " onmouseout="zeroinfo()" /></a></td>
+<td class='tdmninvimg'><a href = "#" onclick="moveindex(2); lastval = 2"><img src='./vvdaimg/interfross/malef.png' border='0' id="malef" onmouseover="affichinfo('Malefices & sorts disponibles.') " onmouseout="zeroinfo()" /></a></td>
+<td class='tdmninvimg'><a href = "#" onclick="cellin()"><img src='./vvdaimg/interfross/geo.png' border='0' id="geo"/ onmouseover="affichinfo('Carte Exploration.') " onmouseout="zeroinfo()"></a></td>
+</tr>
+</table>
+
+<div id="blocdebug">
+<a href="#" onclick="givmaxlife(100)"> donne maxlife</a><br>
+<a href="#" onclick="givmaxmas(100)"> donne maxmal</a><br>
+<a href="#" onclick="givmed(10)"> donnemed10</a><br>
+<a href="#" onclick="givmed(20)"> donnemed20</a><br>
+<a href="#" onclick="givmas(20)"> donnemal20</a><br>
+<a href="#" onclick="givmas(40)"> donnemal40</a><br>
+<a href="#" onclick="givmoney(10)"> donnemoney10</a><br>
+<a href="#" onclick="givmoney(20)"> donnemoney20</a><br>
+<a href="#" onclick="givkey('gold')">clef gold</a><br>
+<a href="#" onclick="givkey('silver')">clef silver</a><br>
+<a href="#" onclick="givarm(1)"> donnefusils</a><br>
+<a href="#" onclick="givarm(2)"> donnebbgun</a><br>
+<a href="#" onclick="givarm(3)"> donnebarre</a><br>
+<a href="#" onclick="givarm(4)"> mains nues</a><br>
+<a href="#" onclick="givarm(5)"> Glock</a><br>
+<a href="#" onclick="chgbonus = 0; rch(chgbonus)">cartouche balle fusils</a><br>
+<a href="#" onclick="chgbonus = 1; rch(chgbonus)">cartouche fusil balle d'argent</a><br>
+<a href="#" onclick="chgbonus = 2; rch(chgbonus)">cartouche big big gun</a><br>
+<a href="#" onclick="chgbonus = 3; rch(chgbonus)">cartouche bbgun argent</a><br>
+<a href="#" onclick="chgbonus = 4; rch(chgbonus)">entretien barre de fer</a><br>
+<a href="#" onclick="chgbonus = 5; rch(chgbonus)">argne mains nus</a><br>
+<a href="#" onclick="chgbonus = 6; rch(chgbonus)">cart.Glock acier</a><br>
+<a href="#" onclick="chgbonus = 7; rch(chgbonus)">cart.Glock argent</a><br>
+<a href="#" onclick="befeng(); denemi(); affichplayer()">enemi (befeng)</a><br>
+<a href="#" onclick="dog(); denemi(); affichenemi(); affichplayer(); ">enemi (dog)</a><br>
+<a href="#" onclick="ross();affichplayer(); ">player : ross</a><br>
+<a href="#" onclick="actmalefice = 'yes'; lycanthro(); affichplayer()"> active le malefice et lycanthropie</a><br>
+<a href="#" onclick="givmaltype('ragedeloup')">donne rage de loup</a><br>
+<a href="#" onclick="givmaltype('coupsdegriffes')">donne coups de griffes</a><br>
+<a href="#" onclick="givmaltype('faimdeloup')">faim de loup</a><br>
+
+<a href="#" onclick="malstart()"> remplire jauge malefice</a><br>
+<a href="#" onclick="malstop()"> stop jauge malefice</a><br>
+<a href="#" onclick="rageloup()"> rage de loup (lycanthropie)</a><br>
+<a href="#" onclick="niveau1s()">Demarrer Niveau 1</a><br>
+<a href="#" onclick="thedebug()">debug</a><br>
+<a href="#" onclick="txtappear()">txtappear</a><br>
+<a href="#" onclick="fuire()">fuire</a><br>
+</div>
+<script language="javascript">
+//variable definissant certaint timeout, (en tableau pour plus de souplesse)
+var ctxtimer = [];
+//fonction d'annulation de ctxtimer
+function erasetime(val)
+{
+clearTimeout(val);
+val = null;
+}
+
+
+//fonction recapitulatve des actions liées au mouvements du joueur
+//variable qui memorise la precedente position du joueur
+var casepreced = null;
+
+function actmov()
+{
+avance();
+thexit();
+monstre();
+thecoffre();
+thecoffretrg();
+thecoffreB();
+piege();
+enscene();
+offrande();
+theporte();
+theporteA();
+enchapt();
+txtingame();
+avancefps();
+//thedebug();
+}
+
+</script>
+<div id='fondscreen'>
+</div>
+<div id="radar" style="position:absolute; left:240px; top:40px; height:160px; width:160px; z-index:12;">
+</div>
+<div id="radarj" style="position:absolute;  left:240px; top:40px; height:160px; width:160px; z-index:14; visibility:hidden;">
+</div>
+<div id="carte" style="position:absolute; left:240px; top:40px; height:160px; width:160px; z-index:12; background-color:black">
+</div>
+<div id="cartej" style="position:absolute;  left:240px; top:40px; height:160px; width:160px; z-index:14; visibility:hidden; background-color:red">
+</div>
+<div id="dirtxt" style="position:absolute; left:10px; top:40px; width:220px; height:160px; z-index:6; color:#ffffff">
+</div>
+<div id="dalert" style="position:absolute; left:10px; top:40px; width:220px; height:160px; z-index:26; visibility:hidden;">
+</div>
+
+<img src="" id="preload" style="position:absolute; left:0px; top:0px; width:0px; height:0px; z-index:0">
+<img src="./vvdaimg/coul/td1.jpg" id="couloir" style="position:absolute; left:10px; top:20px; width:220px; height:160px; z-index:5">
+<img src="./vvdaimg/mst.png" id="caractere" style="position:absolute; left:10px; top:20px; width:220px; height:160px; z-index:6;">
+<img src="./vvdaimg/fire.png" id="effect" style="position:absolute; left:10px; top:20px; width:220px; height:160px; z-index:7; display:none">
+<!-- ----------------FIN DE GLOBALDIV------------------------------------- -->
+<!-- ----------------------------------------------------------------------------- -->
+</div>
+<script type="text/javascript" src="./js/artefact.js"></script>
+<script type="text/javascript" src="./js/caractere.js"></script>
+<script type="text/javascript" src="./js/coffreetautre.js"></script>
+<script type="text/javascript" src="./js/dammage.js"></script>
+<script type="text/javascript" src="./js/dialogue.js"></script>
+<script type="text/javascript" src="./js/enemi.js"></script>
+<script type="text/javascript" src="./js/male.js"></script>
+<script type="text/javascript" src="./js/victory.js"></script>
+<script type="text/javascript" src="./js/weapon.js"></script>
+
+<SCRIPT language="javascript">
+
+//////////////:fonctions de mis en page//////////////////:
+var doc = document;
+//variable de taille max
+//576 960
+var hmax = 720;
+var wmax = 1280;
+//function d'assignation de la definition (entré dans option)
+function godef()
+{
+var valcheck = localStorage.avvdadef;
+var ctrlvalgraph = 0;
+if (
+(valcheck  == "val1")||
+(valcheck  == "val2")||
+(valcheck  == "val3")||
+(valcheck  == "val4")||
+(valcheck  == "val5")) {ctrlvalgraph = 1};
+if (ctrlvalgraph == 0){
+localStorage.setItem("avvdadef", "val3");
+}
+if (valcheck =="val1"){hmax=376; wmax=760};
+if (valcheck =="val2"){hmax=476; wmax=860};
+if (valcheck =="val3"){hmax=576; wmax=960};
+if (valcheck =="val4"){hmax=676; wmax=1060};
+if (valcheck =="val5"){hmax=720; wmax=1280};
+//alert(valcheck + " " + hmax + " " + wmax)
+}
+godef()
+//variables de points d'origine de mise en page
+var pointox = Math.round(document.body.clientHeight / 12);
+var pointoy = Math.round((document.body.clientWidth / 2) - (wmax / 2))
+
+var hbmax = document.body.clientHeight; //hauteur max du body
+var wbmax = document.body.clientWidth; //largeur max du body
+
+
+//position de story
+document.body.style.fontSize = Math.round(hmax / 26);
+doc.getElementById('fondscreen').style.position = 'absolute';
+doc.getElementById('fondscreen').style.top = pointox;
+doc.getElementById('fondscreen').style.left = pointoy;
+doc.getElementById('fondscreen').style.width = wmax;
+doc.getElementById('fondscreen').style.height = Math.round(hmax);
+doc.getElementById('fondscreen').style.zIndex = 5;
+
+
+//taille des images de menu suivant taille de l'ecran
+function menuimg(val)
+{
+var wmimg = document.getElementById(val).width;
+var hmimg = document.getElementById(val).height;
+var wratio = Math.round(wmax / wmimg);
+var hratio = Math.round(hmax / hmimg);
+var wmimg2 = Math.round((wmax / wratio) * 0.9);
+var hmimg2 = Math.round((hmax / hratio) * 0.9);
+
+doc.getElementById(val).style.width = wmimg2;
+doc.getElementById(val).style.height = hmimg2;
+}
+
+//menuimg('curentimg');
+menuimg('bullet');
+menuimg('malef');
+menuimg('geo');
+menuimg('artef');
+menuimg('bulletpls');
+menuimg('bulletms');
+menuimg('bulletmx');
+menuimg('attak');
+menuimg('attakmax');
+menuimg('fuite');
+
+
+
+function menuplayerimg()
+{
+var wmimg = document.getElementById('playerimg').width;
+var hmimg = document.getElementById('playerimg').height;
+var ratio = eval(wmimg / hmimg);
+
+var hmimg2 = Math.round(hmax / 8);
+var wmimg2 = Math.round(hmimg2 * ratio);
+
+doc.getElementById('playerimg').style.width = wmimg2;
+doc.getElementById('playerimg').style.height = hmimg2;
+}
+
+
+function menuenemiimg()
+{
+if ((enemiimg != '')||(enemiimg != null)||(enemiimg != 'undefined')||(enemiimg != 'null')){
+
+var wmimg = document.getElementById('enemiimg').width;
+var hmimg = document.getElementById('enemiimg').height;
+var ratio = eval(wmimg / hmimg);
+
+var hmimg2 = Math.round(hmax / 8);
+var wmimg2 = Math.round(hmimg2 * ratio);
+
+doc.getElementById('enemiimg').style.width = wmimg2;
+doc.getElementById('enemiimg').style.height = hmimg2;
+}
+}
+
+
+function posstory()
+{
+doc.getElementById('story').style.opacity = 1;
+doc.getElementById('story').style.padding = 10;
+doc.getElementById('story').style.top = pointox;
+doc.getElementById('story').style.left = pointoy;
+doc.getElementById('story').style.height = Math.round(hmax);
+doc.getElementById('story').style.width = Math.round(wmax);
+doc.getElementById('txtstory').style.opacity = 1;
+doc.getElementById('txtstory').style.fontSize = Math.round(hmax / 32);
+}
+posstory()
+//position de div dalert()
+function posalert()
+{
+doc.getElementById('dalert').style.height = Math.round(hmax / 3.2);
+doc.getElementById('dalert').style.width = Math.round(wmax / 1.9);
+doc.getElementById('dalert').style.top = pointox + Math.round(hmax / 6);
+doc.getElementById('dalert').style.left = pointoy + Math.round(wmax / 3);
+doc.getElementById('dalert').style.fontSize = Math.round(hmax / 32);
+doc.getElementById("dalert").style.zIndex = 26;
+}
+posalert()
+//position de victoire et defaite
+function posvictdef()
+{
+Math.round(hmax / 2.5);
+
+doc.getElementById('victoire').style.height = Math.round(hmax / 1.8);
+doc.getElementById('victoire').style.width = Math.round(wmax / 1.8);
+doc.getElementById('defaite').style.height = Math.round(hmax);
+doc.getElementById('defaite').style.width = Math.round(wmax);
+
+doc.getElementById('victoire').style.top = pointox + Math.round(hmax / 12);
+doc.getElementById('victoire').style.left = pointoy + Math.round(wmax / 4);
+doc.getElementById('defaite').style.top = pointox;
+doc.getElementById('defaite').style.left = pointoy;
+
+doc.getElementById('victoire').style.fontSize = Math.round(hmax / 32);
+doc.getElementById('defaite').style.fontSize = Math.round(hmax / 32);
+}
+posvictdef();
+
+doc.getElementById("retourmenu").style.top = Math.round(pointox * 1) ;
+doc.getElementById("retourmenu").style.left = Math.round(pointoy*1.5); 
+doc.getElementById("retourmenu").style.zIndex = 16;
+doc.getElementById("retourmenu").style.fontSize = Math.round(hmax / 34);
+
+doc.getElementById("thelevel").style.top = Math.round(pointox * 1) ;
+doc.getElementById("thelevel").style.left = Math.round(pointoy + (wmax/3*2)); 
+doc.getElementById("thelevel").style.zIndex = 16;
+doc.getElementById("thelevel").style.fontSize = Math.round(hmax / 34);
+
+
+///position commandes courantes
+doc.getElementById("curent").style.top = pointox + Math.round(hmax / 6 *5);
+doc.getElementById("curent").style.left = pointoy; 
+doc.getElementById("curent").style.height = Math.round(hmax / 6);
+doc.getElementById("curent").style.width = wmax;
+doc.getElementById("curent").style.zIndex = 13;
+doc.getElementById("curent").style.fontSize = Math.round(hmax / 34);
+
+///position inventaire
+doc.getElementById("blocinventaire").style.top = pointox + Math.round(hmax / 6 *  2);
+doc.getElementById("blocinventaire").style.left = pointoy + Math.round(wmax / 6 * 4);
+doc.getElementById("blocinventaire").style.height = Math.round(hmax / 2);
+doc.getElementById("blocinventaire").style.width = Math.round(wmax / 3);
+doc.getElementById("blocinventaire").style.zIndex = 12;
+doc.getElementById("blocinventaire").style.fontSize = Math.round(hmax / 34);
+//position artifact
+doc.getElementById("blocartefact").style.top = pointox + Math.round(hmax / 6 *  2);
+doc.getElementById("blocartefact").style.left = pointoy + Math.round(wmax / 6 * 4);
+doc.getElementById("blocartefact").style.height = Math.round(hmax / 2);
+doc.getElementById("blocartefact").style.width = Math.round(wmax / 3);
+doc.getElementById("blocartefact").style.zIndex = 11; 
+doc.getElementById("blocartefact").style.fontSize = Math.round(hmax / 34);
+
+//position malefice
+doc.getElementById("blocmalef").style.top =  pointox + Math.round(hmax / 6 *  2);
+doc.getElementById("blocmalef").style.left = pointoy + Math.round(wmax / 6 * 4);
+doc.getElementById("blocmalef").style.height = Math.round(hmax / 2);
+doc.getElementById("blocmalef").style.width = Math.round(wmax / 3);
+doc.getElementById("blocmalef").style.zIndex = 10; 
+doc.getElementById("blocmalef").style.fontSize = Math.round(hmax / 34);
+
+
+//position de masterbloc
+doc.getElementById("masterbloc").style.top =  pointox + Math.round(hmax / 6 *  2);
+doc.getElementById("masterbloc").style.left = pointoy + Math.round(wmax / 6 * 4);
+doc.getElementById("masterbloc").style.height = Math.round(hmax / 2);
+doc.getElementById("masterbloc").style.width = Math.round(wmax / 3);
+doc.getElementById("masterbloc").style.zIndex = 12; 
+doc.getElementById("masterbloc").style.fontSize = Math.round(hmax / 34);
+doc.getElementById("masterbloc").style.visibility = 'hidden';
+
+//position menu inventaire
+
+doc.getElementById("mninv").style.top = pointox  + Math.round(hmax / 4 * 3.2);
+doc.getElementById("mninv").style.left = pointoy + Math.round(wmax / 6 * 2);
+doc.getElementById("mninv").style.height = Math.round(hmax / 22.5);
+doc.getElementById("mninv").style.width = Math.round(wmax / 4) ;
+doc.getElementById("mninv").style.zIndex = 16;
+doc.getElementById("mninv").style.fontSize = Math.round(hmax / 34);
+
+//position du statue joueur
+doc.getElementById("blocplayer").style.top = pointox + Math.round(hmax / 6* 4.4);
+doc.getElementById("blocplayer").style.left = pointoy;
+doc.getElementById("blocplayer").style.height = Math.round(hmax / 6.7);
+doc.getElementById("blocplayer").style.width = Math.round(wmax / 2);
+doc.getElementById("blocplayer").style.zIndex = 16;
+doc.getElementById("blocplayer").style.fontSize = Math.round(hmax / 34);
+
+//position du statue arme actuel
+doc.getElementById("armact").style.top = pointox + Math.round(hmax / 6 *4.9);
+doc.getElementById("armact").style.left = pointoy + Math.round(wmax / 11);
+doc.getElementById("armact").style.height = Math.round(hmax / 20);
+doc.getElementById("armact").style.width = Math.round(wmax / 2);
+doc.getElementById("armact").style.zIndex = 15;
+doc.getElementById("armact").style.fontSize = Math.round(hmax / 34);
+
+
+
+//position du divsshowdama
+
+doc.getElementById("divshowdama").style.zIndex = 18;
+doc.getElementById("divshowdama").style.top = pointox + Math.round(hmax / 3*2) ;
+doc.getElementById("divshowdama").style.left = pointoy + Math.round(wmax / 1.2);
+doc.getElementById("divshowdama").style.height = Math.round(hmax / 6.7);
+doc.getElementById("divshowdama").style.width = Math.round(wmax / 3.2);
+doc.getElementById("divshowdama").style.fontSize = Math.round(hmax / 14);
+
+//position du divsshowdamaene
+doc.getElementById("divshowdamaene").style.zIndex = 19;
+doc.getElementById("divshowdamaene").style.top = Math.round( pointox + hmax - (hmax*0.95));
+doc.getElementById("divshowdamaene").style.left = pointoy + Math.round(wmax / 1.2);
+doc.getElementById("divshowdamaene").style.height = Math.round(hmax / 6.7);
+doc.getElementById("divshowdamaene").style.width = Math.round(wmax / 3.2);
+doc.getElementById("divshowdamaene").style.fontSize = Math.round(hmax / 14);
+
+
+//doc.getElementById("divshowdamaene").style.top = Math.round( pointox + hmax - hmax);
+doc.getElementById("disen").style.left = pointoy + Math.round(wmax / 6);
+doc.getElementById("disen").style.fontSize = Math.round(hmax / 26);
+
+
+//script des zindex des menu contextuels inventaire artefact malefice
+var nomdiv = ['blocinventaire', 'blocartefact','blocmalef'];
+var normindex  = ['12', '11','10'];
+var actindex = ['12', '11','10'];
+var lastval = null;
+
+
+
+function moveindex(val)
+{
+var i = 0;
+for(i = 0; i <= 2; i++){
+var nno = nomdiv[i];	
+actindex[i] = normindex[i];
+document.getElementById(nno).style.zIndex = actindex[i];
+document.getElementById(nno).className = 'notrans';
+}
+var nn = nomdiv[val];
+actindex[val] = 12;
+document.getElementById(nn).style.zIndex = actindex[val];
+
+
+//alert(document.getElementById(nn).className);
+
+if ((document.getElementById("masterbloc").style.visibility == 'visible')&&(lastval == val))
+{
+document.getElementById("masterbloc").style.visibility = 'hidden';
+}
+else {
+document.getElementById("masterbloc").style.visibility = 'visible';
+}
+document.getElementById(nn).className = 'rotpageIN';
+}
+
+
+
+//position de statue enemi
+
+doc.getElementById("blocenemi").style.top = pointox;
+doc.getElementById("blocenemi").style.left = pointoy;
+doc.getElementById("blocenemi").style.height = eval(hmax / 12);
+doc.getElementById("blocenemi").style.width = wmax;
+doc.getElementById("blocenemi").style.zIndex = 15;
+doc.getElementById("blocenemi").style.fontSize = Math.round(hmax / 34);
+//position du debug
+
+doc.getElementById("blocdebug").style.top = '0px' ;
+doc.getElementById("blocdebug").style.left = pointoy + wmax + 50 ;
+doc.getElementById("blocdebug").style.height = hmax - pointoy;
+doc.getElementById("blocdebug").style.width = 240;
+doc.getElementById("blocdebug").style.zIndex = 17;
+doc.getElementById("blocdebug").style.visibility = 'hidden';
+doc.getElementById("blocdebug").style.display = 'none';
+
+//position du decor "couloir"
+
+doc.getElementById("couloir").style.top = pointox ;
+doc.getElementById("couloir").style.left = pointoy + Math.round(wmax / 30);
+doc.getElementById("couloir").style.height = Math.round(hmax / 1.07);
+doc.getElementById("couloir").style.width = Math.round(wmax / 1.07);
+doc.getElementById("couloir").style.zIndex = 5;
+
+doc.getElementById("caractere").style.height = Math.round(hmax / 2.1);
+doc.getElementById("caractere").style.width = Math.round(wmax / 2.1);
+doc.getElementById("caractere").style.top = Math.round(pointox + (hmax / 10));
+doc.getElementById("caractere").style.left = Math.round(pointoy + (wmax / 2) - (wmax / 2.1) / 2);
+doc.getElementById("caractere").style.zIndex = 6;
+doc.getElementById("caractere").style.display = 'none';
+doc.getElementById("caractere").style.visibility = 'hidden';
+doc.getElementById("caractere").style.opacity = 0;
+
+
+doc.getElementById("divshowmal").style.top = pointox;
+doc.getElementById("divshowmal").style.left = pointoy + Math.round(wmax / 30);
+doc.getElementById("divshowmal").style.height = Math.round(hmax / 1.07);
+doc.getElementById("divshowmal").style.width = Math.round(wmax / 1.07);
+doc.getElementById("divshowmal").style.zIndex = 25;
+
+doc.getElementById("effect").style.top = Math.round(pointox + (hmax / 4 *3));
+doc.getElementById("effect").style.left = pointoy;
+doc.getElementById("effect").style.height = Math.round(hmax / 4);
+doc.getElementById("effect").style.width = wmax;
+doc.getElementById("effect").style.zIndex = 7;
+doc.getElementById("effect").style.display = 'none';
+
+//position du text dialogue, direction
+doc.getElementById("dirtxt").style.top = pointox + eval(hmax / 10);
+doc.getElementById("dirtxt").style.left = pointoy + Math.round(wmax / 6);
+doc.getElementById("dirtxt").style.height = eval(hmax / 10);
+doc.getElementById("dirtxt").style.width = doc.getElementById("couloir").style.width;
+doc.getElementById("dirtxt").style.zIndex = 7;
+doc.getElementById("dirtxt").style.fontSize = Math.round(hmax / 34)
+
+//position du bloc arme
+doc.getElementById("blocarm").style.height = Math.round(hmax / 5);
+doc.getElementById("blocarm").style.width = Math.round(wmax / 2.6);
+doc.getElementById("blocarm").style.fontSize = Math.round(hmax / 34);
+doc.getElementById("blocarm").style.top = Math.round(hmax/25);
+doc.getElementById("blocarm").style.left = Math.round(wmax / 1.8);;
+
+doc.getElementById("bloccurmal").style.height = Math.round(hmax / 5);
+doc.getElementById("bloccurmal").style.width = Math.round(wmax / 7);
+doc.getElementById("bloccurmal").style.fontSize = Math.round(hmax / 34);
+doc.getElementById("bloccurmal").style.top = -1 * Math.round(hmax / 5) + Math.round(hmax / 25);
+doc.getElementById("bloccurmal").style.left = Math.round(wmax / 8);
+
+
+//postion du control de position
+doc.getElementById("cdmov").style.height = Math.round(hmax / 11);
+doc.getElementById("cdmov").style.width = Math.round(wmax / 11);
+doc.getElementById("cdmov").style.top = pointox + Math.round(hmax / 6 * 3.5);
+doc.getElementById("cdmov").style.left = pointoy + Math.round(wmax / 6 * 5.1);
+doc.getElementById("cdmov").style.zIndex = 17;
+
+function imgarrow(val)
+{
+var wmimg = document.getElementById(val).width;
+var hmimg = document.getElementById(val).height;
+var wratio = Math.round(wmax / wmimg);
+var hratio = Math.round(hmax / hmimg);
+var wmimg2 = Math.round((wmax / wratio) * 0.85);
+var hmimg2 = Math.round((hmax / hratio) * 0.85);
+
+doc.getElementById(val).style.width = wmimg2;
+doc.getElementById(val).style.height = hmimg2;
+}
+imgarrow("flechh");
+imgarrow("flechd");
+imgarrow("flechg");
+imgarrow("flechb");
+
+//postion du bloc stock arm
+doc.getElementById("stockarm").style.height = Math.round(hmax / 3);
+doc.getElementById("stockarm").style.width = Math.round(wmax / 4);
+doc.getElementById("stockarm").style.fontSize = Math.round(hmax / 34);
+//postion du bloc stock malefice
+doc.getElementById("stockmal").style.height = Math.round(hmax / 3);
+doc.getElementById("stockmal").style.width = Math.round(wmax / 4);
+doc.getElementById("stockmal").style.fontSize = Math.round(hmax / 34);
+
+//postion du control de l'info
+doc.getElementById("info").stylefontSize = Math.round(hmax / 34);
+doc.getElementById("info").style.top =  -1 * Math.round(hmax / 7 * 2);
+doc.getElementById("info").style.left = pointoy;
+
+//style de tabinven
+doc.getElementById("tabinven2").style.fontSize = Math.round(hmax / 34);
+doc.getElementById("tabinven3").style.fontSize = Math.round(hmax / 34);
+doc.getElementById("tabinven4").style.fontSize = Math.round(hmax / 34);
+//position de carte(fond)
+
+function poscarte()
+{
+doc.getElementById("carte").style.position = 'absolute';
+doc.getElementById("carte").style.height = hmax;
+doc.getElementById("carte").style.width = wmax;
+
+doc.getElementById("carte").style.top = Math.round(pointox);
+doc.getElementById("carte").style.left = Math.round(pointoy);
+doc.getElementById("carte").style.height = Math.round(hmax);
+doc.getElementById("carte").style.width = Math.round(wmax);
+doc.getElementById("carte").style.zIndex = 3;
+
+//position de carte position joueur.
+doc.getElementById("cartej").style.position = 'absolute';
+doc.getElementById("cartej").style.height = hmax;
+doc.getElementById("cartej").style.width = wmax;
+
+doc.getElementById("cartej").style.top = Math.round(pointox)
+doc.getElementById("cartej").style.left = Math.round(pointoy);
+doc.getElementById("cartej").style.height = Math.round(hmax);
+doc.getElementById("cartej").style.width = Math.round(wmax);
+doc.getElementById("cartej").style.zIndex = 4;
+
+}
+poscarte();
+function cellin()
+{
+if (document.getElementById('carte').style.zIndex == 3)
+{document.getElementById('carte').style.zIndex = 19
+document.getElementById('cartej').style.zIndex = 20
+}
+else
+{
+document.getElementById('carte').style.zIndex = 3;
+document.getElementById('cartej').style.zIndex = 4
+}
+}
+
+//position du radar
+doc.getElementById("radar").style.top = pointox + eval(hmax / 15);
+doc.getElementById("radar").style.left = pointoy + Math.round(wmax / 4) + Math.round(wmax / 2) + eval(hmax / 16);
+doc.getElementById("radar").style.height = 130
+doc.getElementById("radar").style.width = 130
+doc.getElementById("radar").style.zIndex = 12;
+//position de radar position joueur.
+doc.getElementById("radarj").style.top = pointox + eval(hmax / 15);
+doc.getElementById("radarj").style.left = pointoy + Math.round(wmax / 4) + Math.round(wmax / 2) + eval(hmax / 16);
+doc.getElementById("radarj").style.height = 130
+doc.getElementById("radarj").style.width = 130
+doc.getElementById("radarj").style.zIndex = 14;
+
+////////////chargement graphique de la carte/////////////////////
+////////////chargement graphique de la carte (tableau )/////////////////////
+//variables du type de graphisme (.jpg; .bmp;.png...)//
+//ces variable seront modifi� dans la fonction du niveau
+var graphexta = ".png";
+var graphextb = ".png";
+var graphextc = "";
+var graphextd = "";
+//////////////variable identifiant le repertoire des graphisme.
+var folderimg = "./vvdaimg/";
+
+//variable du path des graphisme du radar//
+
+var fog = new Image();
+var zerofog = new Image();
+var hid = new Image();
+var hidhg = new Image();
+var hidhd = new Image();
+var hidvb = new Image();
+
+
+fog.src = folderimg + "fog" + graphextb;
+zerofog.src = folderimg + "zerofog" + graphextb;
+hid.src = folderimg + "hid" + graphextb;
+hidhg.src = folderimg + "hidhg" + graphextb;
+hidhd.src = folderimg +"hidhd" + graphextb;
+hidvb.src = folderimg + "hidvb" + graphextb;
+
+
+var graphlevel = null;
+var graphcoul = null;
+// la variable graph retournera le chimen complet du graphisme de couloir a afficher//
+graphcoul = "./vvdaimg/bayou/"
+graphexta= ".png";
+// la variable graph retournera le chimen complet du graphisme de couloir a afficher//
+//dans le  fonction defcoul()
+var graph = null;
+////////////////////////////////////////////
+//function de prechargement des images de couloir
+////////////////////////////////////////////
+
+var td = null;
+var interdg =  null;
+var interc1 =  null;
+var interdd =  null;
+var cs =  null;
+var intergd =  null;
+var interg =  null;
+var interd =  null;
+//alert(graphcoul + "interd" + graphexta);
+function preloadground()
+{
+td = new Image();
+interdg =  new Image();
+interc1 =  new Image();
+interdd =  new Image();
+cs =  new Image();
+intergd =  new Image();
+interg =  new Image();
+interd =  new Image();
+
+td.src =  graphcoul + "td1" + graphexta;
+
+interdg.src =  graphcoul + "interdg" + graphexta;
+
+interc1.src =  graphcoul + "interc1" + graphexta;
+
+interdd.src =  graphcoul + "interdd" + graphexta;
+
+cs.src =  graphcoul + "cs" + graphexta;
+
+intergd.src =  graphcoul + "intergd" + graphexta;
+
+interg.src =  graphcoul + "interg" + graphexta;
+
+interd.src =  graphcoul + "interd" + graphexta;
+//alert(td.src)
+
+var cachlistground = [td.src,interdg.src,interc1.src,interdd.src,cs.src,intergd.src,interg.src,interd.src]
+for(i = 0; i < cachlistground.length; i++)
+				{
+document.getElementById('preload').src = cachlistground[i]
+if (document.getElementById('preload').complete) { i +=1; } 
+				}
+				//alert(String(interd.src))
+affichplayer()
+}
+preloadground()
+
+////////////////////////////////////////////////////
+//variables utilis�s pour le changement de position du joueur dans le labyrinthe//
+/////////////////////////
+var posjoueur;
+var mouvvalue;
+var casejoueur;
+var greenpos;
+var jpos;
+var newjpos;
+var orivalue = new Array('vh',
+    	               'hg','hd',
+    		         'vb');
+var groundsup = 9
+
+var ground = [];
+/////////////variable du path du repertoire des graphisme du niveau///////////////
+var graphlevel = "";
+//cette variable sera modifi� dans la fonction du niveau
+//////////////////////////////////////////////////////////////////
+//variable de la sortie du niveau;
+var exit = [];
+//variable de piege de type "a";
+var piegea = [];
+
+//fonction de detection des pieges
+//si le joueur se trouve sur une case pieges alors on active le piege
+function piege(){	
+	if (piegea[casejoueur] == 'mortel'){affichepiegeM()};
+	if (piegea[casejoueur] == 'piege'){affichepiege()};
+}
+var monster = [];
+var monstertypepose = [];
+//fonction de detection des monstres
+//si le joueur se trouve sur une case monstre alors on active le monstre
+function monstre(){
+	if (monster[casejoueur] == 'dog'){ 
+							//alert('dog');
+							dog() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'alligator'){ 
+							//alert('dog');
+							alligator() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'serpent'){ 
+							//alert('dog');
+							serpent() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'rats'){ 
+							//alert('rats');
+							rats() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'uberalligator'){ 
+							//alert('rats');
+							uberalligator() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'commando'){ 
+							//alert('rats');
+							commando() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == 'zombie'){ 
+							//alert('rats');
+							zombie() ;
+denemi(); affichenemi(); affichplayer(); 
+};
+if (monster[casejoueur] == ''){};
+}
+//variable des cutscenes;
+var cutscene = [];
+var enchapter = [];
+var ingame = [];
+var dialchapt = null;
+//variable pour la statue des offrandes
+var levelcode = null;
+var offrandesomme = null;
+//fonction de detection des cutscenes
+//reference tous les dialogues et affiche celui voulue
+
+function storychapt(dialchapt)
+{
+basiccontent('thelevel', dialchapt);
+}
+//si le joueur se trouve sur une case cutscene alors on active la cutscene
+function enscene(){	
+if (cutscene[casejoueur] != undefined){storyspeak(cutscene[casejoueur])};
+}
+function enchapt()
+{
+if (enchapter[casejoueur]  != undefined){storychapt(enchapter[casejoueur])};
+}
+function txtingame()
+{
+
+if (ingame[casejoueur]  != undefined) {
+	affichechapt(ingame[casejoueur])
+	};
+}
+//interaction de la statue_offrande
+function offrande(){	
+if (statue[casejoueur] != undefined){
+afficheoffrande()
+};
+}
+//
+//si le joueur se trouve sur une case sortie alors on active la sortie
+function thexit(){
+	if (exit[casejoueur] == 'sortie A'){alert(exit[casejoueur])};
+	if (exit[casejoueur] == 'sortie B'){alert(exit[casejoueur])};
+	}
+//si le joueur se trouve sur une case coffre alors on active affiche coffre
+var coffre = new Array();
+function thecoffre(){
+	if (coffre[casejoueur] == 'coffre'){affichecoffre()};
+	if (coffre[casejoueur] == 'ouvert'){jalert('coffre ouvert et vide : dommage')};
+	}
+//si le joueur se trouve sur une case coffre alors on active affiche coffre
+var coffretrg = new Array();
+function thecoffretrg(){
+	if (coffretrg[casejoueur] == 'coffre'){affichecoffreAN()};
+	if (coffretrg[casejoueur] == 'ouvert'){jalert('coffre etrange ouvert et vide : dommage'); coffretrg[casejoueur] = 'ouvert'};
+	}
+var coffreB = new Array();
+function thecoffreB(){
+	if (coffreB[casejoueur] == 'coffre'){affichecoffreB()};
+	if (coffreB[casejoueur] == 'ouvert'){jalert('coffre Bandit manchot ouvert et vide : dommage')};
+	}
+var porte = new Array();
+function theporte(){
+	if (porte[casejoueur] == 'porte'){afficheporte()};
+	}
+var porteA = new Array();
+var porteAtype = new Array();
+function theporteA(){
+	if (porteA[casejoueur] == 'porte'){afficheporteA(porteAtype[casejoueur])};
+	}
+// variable li� a la determination de la taille du terrain
+var groundstop;
+groundstop = eval(groundsup * groundsup);
+var lradar = null;
+
+function makeatables(id, id2, cellid, cellid2, taille, longueur)
+{
+//constuction du tableau de la carte//
+var tab = "<table border='0' cellspacing=0 cellpadding=0 id='ttab'><tr>";
+var tab2 = "<table border='0' cellspacing=0 cellpadding=0 id='ttab2'><tr>";
+var cellule = 0;
+	for(i = 0; i < taille; i++){
+	tab += "<td><a href='#' onclick='cellin()'><img src='" + 
+	fog.src + "' id='" + cellid
+	+ i + "'border=0 >" + ""  +
+	 "</a></td>";
+        cellule += 1;
+	if (cellule == longueur){tab +="</tr><tr>"; cellule = 0; };
+	}
+tab += "</tr></table>"
+document.getElementById(id).innerHTML = tab;
+cellule = 0;
+//construction du tableau de la position du joueur//
+for(i = 0; i < taille; i++){
+	tab2 += "<td><img src='" + hid.src + "' id='" + cellid2
+	+ i + "' style=visibility:'hidden'>" + 
+	 "</td>";
+        cellule += 1;
+	if (cellule == longueur){tab2 +="</tr><tr>"; cellule = 0; };
+	}
+tab2 += "</tr></table>"
+document.getElementById(id2).innerHTML = tab2;
+cellule = 0;
+
+
+}
+makeatables('radar', 'radarj', 'cellrad','cellradj', 49, 7);
+makeatables('carte', 'cartej', 'cell', 'cellj', groundstop, groundsup);
+
+///////////////////////////////////////////////////////////////////////////////
+
+//fonction qui limite les deplacement du joueur
+//////////////////////////
+function dontmovectrl(){
+if ((casejoueur / groundsup) == Math.round(casejoueur / groundsup))
+{if(posjoueur == orivalue[1]){posjoueur = orivalue[2]}} ;
+if (eval((casejoueur + 1) / groundsup) == Math.round( eval((1 + casejoueur) / groundsup)))
+{if(posjoueur == orivalue[1]){posjoueur = orivalue[1]}} ;
+///////////////////////////////////////////////////////////
+if (casejoueur <= groundsup){if((posjoueur == orivalue[0])&&(casejoueur != groundsup))
+{posjoueur = orivalue[3];} };
+if (casejoueur >= groundsup * groundsup - groundsup){
+if(posjoueur == orivalue[3])
+{
+posjoueur = orivalue[0];};
+}
+}
+//fonction qui autorise les deplacements
+///////////////////////////////
+function ctrlcoul(){
+if (ground[casejoueur + mouvvalue] != 'coul'){mouvvalue = 0};
+}
+
+var intersect = '';
+var coulface;
+var coulg;
+var could;
+
+function defcoul(){
+////fonction qui definie les intersections a afficher////
+
+if (posjoueur == 'vh'){
+coulface = eval(casejoueur - groundsup);
+coulg = eval(casejoueur - 1);
+could = eval(casejoueur  + 1);
+}
+if (posjoueur == 'hg'){
+coulface = eval(casejoueur - 1);
+coulg = eval(casejoueur + groundsup);
+could = eval(casejoueur - groundsup);}
+if (posjoueur == 'hd'){
+coulface = eval(casejoueur + 1);
+coulg = eval(casejoueur - groundsup);
+could = eval(casejoueur + groundsup);
+}
+if (posjoueur == 'vb'){
+coulface = eval(casejoueur + groundsup);
+coulg = eval(casejoueur + 1);
+could = eval(casejoueur - 1);
+}
+//////////////////////::radar/////////////////////
+var groundsup2 = Math.round(groundsup * 2);
+var lradar2 = Math.round(lradar * 2);
+var itedir = new Array(+ 1, - 1, + 2, - 2, + groundsup, - groundsup,+ groundsup -1, + groundsup + 1, - groundsup -1, - groundsup + 1, 
++ groundsup -2, + groundsup + 2, - groundsup -2, - groundsup + 2, 
++ groundsup2, - groundsup2, + groundsup2 -1, + groundsup2 + 1, - groundsup2 -1, - groundsup2 + 1, 
++ groundsup2 -2, + groundsup2 + 2, - groundsup2 -2, - groundsup2 + 2 );
+
+var iterad = new Array(
++ 1, - 1, + 2, - 2, + lradar, - lradar,+ lradar -1, + lradar + 1, - lradar -1, - lradar + 1, 
++ lradar -2, + lradar + 2, - lradar -2, - lradar + 2, 
++ lradar2, - lradar2, + lradar2 -1, + lradar2 + 1, - lradar2 -1, - lradar2 + 1, 
++ lradar2 -2, + lradar2 + 2, - lradar2 -2, - lradar2 + 2 );
+for(i = 0; i < itedir.length; i++)
+{
+var thevaluerad = Math.round(radarjoueur + iterad[i]);
+var thevalue = Math.round(casejoueur + itedir[i])
+	if ((thevalue >= 0) && (thevalue <= groundstop))
+	{
+	
+	document.getElementById('cellrad' + thevaluerad).src = 
+	document.getElementById('cell' + thevalue).src 
+	
+	}
+}
+
+
+/////////////////////////////////////////////////:
+//definition des intercections
+if (ground[coulface] == 'coul'){intersect += 'a';}
+if (ground[coulg] == 'coul'){intersect += 'b';}
+if (ground[could] == 'coul'){intersect += 'c';};
+
+
+switch (intersect){
+case 'a' : 
+decohtml = "Allez tout droit.";
+graph =  td.src;
+break;
+case'ab' :
+decohtml = "Allez tout droit ou a gauche";
+graph =  interdg.src;
+break;
+case 'abc' : 
+decohtml = "Allez tout droit ou a gauche ou a droite";
+graph =  interc1.src;
+break;
+case 'ac' :
+decohtml = "Allez tout droit ou a droite"
+graph = interdd.src
+break;
+case '' :
+graph =  cs.src;
+decohtml = "Sans issue";
+break;
+case 'bc' :
+graph =  intergd.src;
+decohtml = "Allez a droite ou a gauche";
+break;
+case 'b' :
+graph =  interg.src;
+decohtml = "Allez a gauche";
+break;
+case 'c' :
+graph =  interd.src;
+decohtml = "Allez a droite";
+break;
+default :
+decohtml = "Desorientation.";
+graph =   td.src;
+}
+document.getElementById('couloir').src = graph;
+intersect = '';
+document.getElementById('dirtxt').innerHTML = decohtml;
+shake('dirtxt')
+}
+
+function dtcoul(){
+//fonction pour identifier les couloirs proche//
+
+if (ground[casejoueur - 1] == 'coul'){
+
+greenpos = "cell" + eval(casejoueur - 1);
+document.getElementById(greenpos).src = zerofog.src;
+}
+if (ground[casejoueur + 1] == 'coul'){
+
+greenpos = "cell" + eval(casejoueur + 1);
+document.getElementById(greenpos).src = zerofog.src;
+}
+if (ground[casejoueur - groundsup] == 'coul'){
+
+greenpos = "cell" + eval(casejoueur - groundsup);
+document.getElementById(greenpos).src = zerofog.src;
+}
+if (ground[casejoueur + groundsup] == 'coul'){
+
+greenpos = "cell" + eval(casejoueur + groundsup);
+document.getElementById(greenpos).src = zerofog.src;
+}
+}
+/// avancer //
+function avance(){
+
+//memorise la position actuel avant que le joueur avance
+casepreced = casejoueur;
+
+dontmovectrl();
+if (posjoueur == 'hg'){mouvvalue = -1;};
+if (posjoueur == 'hd'){mouvvalue = 1};
+if (posjoueur == 'vh'){mouvvalue = eval( (groundsup - (groundsup*2)) )};
+if (posjoueur == 'vb'){mouvvalue = groundsup};
+////////////////
+ctrlcoul();
+if (ground[casejoueur + mouvvalue] == 'coul'){
+jpos = "cellj" + casejoueur;
+newjpos = "cellj"  + eval(casejoueur + mouvvalue);
+
+document.getElementById(jpos).style.visibility = 'hidden';
+
+if (posjoueur == 'hg'){document.getElementById(newjpos).src = hidhg.src};
+if (posjoueur == 'hd'){document.getElementById(newjpos).src = hidhd.src};
+if (posjoueur == 'vh'){document.getElementById(newjpos).src = hid.src};
+if (posjoueur == 'vb'){document.getElementById(newjpos).src = hidvb.src};
+document.getElementById(jposR).src = document.getElementById(newjpos).src;
+
+document.getElementById(newjpos).style.visibility = 'visible';
+defcoul()
+ };
+ 
+
+ 
+////////////////////////
+casejoueur = eval(casejoueur + mouvvalue);
+mouvvalue = 0;
+greenpos = "cell" + casejoueur;
+
+document.getElementById(greenpos).src = zerofog.src;
+dtcoul();
+defcoul();
+}
+
+
+//fonction pour aller a la case precedente
+function recule()
+{
+//alert(casepreced + "||"  + casejoueur)
+jpos = "cellj" + casejoueur;
+newjpos = "cellj"  + casepreced;
+fading(jpos);
+//document.getElementById(jpos).style.visibility = 'hidden';
+
+
+document.getElementById(jposR).src = document.getElementById(newjpos).src;
+apper(newjpos);
+//document.getElementById(newjpos).style.visibility = 'visible';
+casejoueur = casepreced;
+mouvvalue = 0;
+greenpos = "cell" + casejoueur;
+document.getElementById(greenpos).src = zerofog.src;
+dtcoul();
+defcoul()
+}
+
+//////////////////////////////////////////////////////////////////
+//fonction d'insertion du niveau
+/////////////////////////////////////
+
+//petit fonction pour la position du joueur(debug)
+function thedebug(){
+//jalert("case occuper : "  + casejoueur)
+}
+
+//modifie la variable orivalue  et donc le comportement de la fonction avance()
+// pour l'adapter a la vue subjective
+function avancefps()
+{
+if (posjoueur == 'vh')
+{orivalue = ['vh','hg','hd','vb']}
+if (posjoueur == 'hg')
+{orivalue = ['hg','vb','vh','hd']}
+if (posjoueur == 'hd')
+{orivalue = ['hd','vh','vb','hg']}
+if (posjoueur == 'vb')
+{orivalue = ['vb','hd','hg','vh']}
+//alert(posjoueur)
+}
+////////////////////////////////////////
+//scrolling menu contextuels
+var interd = null;
+var valx=null;
+function interdown(val)
+{
+valx = val;
+document.getElementById(valx).scrollTop += 4,60;
+interd = setTimeout('interdown(valx)',100)
+}
+function interup(val)
+{
+valx = val;
+document.getElementById(valx).scrollTop -= 4,60;
+interd = setTimeout('interup(valx)',100)
+}
+function clearinterd()
+{
+clearTimeout(interd); interd = null;
+}
+
+////////////////
+var interl = null;
+function clearinterl()
+{
+clearInterval(interl); interl = null;
+}
+function interLeft(val)
+{
+valx = val;
+document.getElementById(valx).scrollLeft += 4,60;
+interl = setTimeout('interLeft(valx)',50)
+}
+function interRight(val)
+{
+valx = val;
+document.getElementById(valx).scrollLeft -= 4,60;
+interl = setTimeout('interRight(valx)',50)
+}
+/////////////////////////////////////////////////////////////
+//chargement du menu principal
+////////////////////////////////////////////////////////////
+afficheloader("vvdaloader.htm");
+//////////////////////////////////////////////////////////////
+</script>
+</body>
+</html>

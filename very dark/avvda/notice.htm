@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<title>
+A Very Very dark Affaires : Notice
+</title>
+<link rel="stylesheet" href="./avvda.css" type="text/css" media="screen" id="stylebase" title="avvdabase">
+<link rel="stylesheet" 
+href="./fx/fx.css" type="text/css" id="stylefx">
+<script type="text/javascript" src="./fx/ajaxmi.js"></script>
+
+<style>
+#transp {opacity:0.4};
+#imgtitle {position: 'absolute'; opacity: 0.5};
+#thenotice {position: 'absolute'; opacity: 0};
+</style>
+</head>
+<body bgcolor="#000000">
+<div id="transp">
+<img src="./imgtitle.png" id="imgtitle"></img>
+</div>
+<div id="presmenu" class='center'>
+<p style="margin-bottom: 0cm">
+<a href ="../pres.htm" id="jouer" class='pres'>Menu Titre</a>
+||
+<a href ="./credits.htm" id="notice" class='pres'>Credits</a>
+</p>
+</div>
+<div id='thenotice'>
+<p>Notice
+    </p>
+    <p style="margin-bottom: 0cm;">C'&nbsp;était il y a longtemps.
+      Accoudé au bar, vous aviez déjà vu défiler quelques verres et cet
+      homme cette épave aviné qui se disait mercenaire, expert en combat
+      rapproché, vous avez accosté. Vous vouliez votre bulle de
+      solitude, boire tranquille mais pas moyen, il parlait et parlait,
+      il s'était même mis en tête de vous former au règles élémentaires
+      de survie...</p>
+
+    <table border="0" width="70%">
+      <tbody>
+        <tr>
+          <td>
+            <p style="margin-bottom: 0cm"><img style="width: 43px; height: 42px;"
+
+                alt="" src="vvdaimg/interfross/rouge.png">Barre de
+              vie&nbsp;: Devinez quoi, a zéro la partie s’achève, fou
+              non&nbsp;?</p>
+            <p style="margin-bottom: 0cm">Money&nbsp;: Argent disponible
+              (on en a jamais assez).</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/bulletplus.png">Ajoute
+
+              une balle dans le chargeur</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/bulletmoins.png">Enlève
+
+              une balle du chargeur</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/bulletmax.png">Remplie
+
+              le chargeur au max</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/attak.png">Permet
+
+              de tirer un balle / de porter un coups.</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/attakmax.png">Permet
+
+              de tirer plusieurs balles / de porter plusieurs coups
+              (fait plus de dégâts maisattention au stock de munition /
+              usure du materiel)</p>
+	      </td>
+          <td style="width: 50%; height: 50%;"><br>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/fuite.png">Permet
+
+              de fuir un combat (si c'est possible)<br> mais provoque une
+              pénalité (argent /vie enmoins)</p>
+          
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/flechb.png"><img
+
+                alt="" src="vvdaimg/interfross/flechg.png">Fléches de
+              direction.</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/bullet.png">Menu
+
+              de l'armement (choix de l'arme, du type de munition, état
+              du stock armement &nbsp;/ munition)</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/artef.png">Inventaire&nbsp;:
+
+              objets trouvés, trousse de soin etc...</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/malef.png">Maléfices...&nbsp;:&nbsp;???</p>
+            <p style="margin-bottom: 0cm"><img alt="" src="vvdaimg/interfross/geo.png">Carte&nbsp;:
+
+              bah, a défaut de GPS...</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+//////////////:fonctions de mis en page//////////////////:
+//variable de taille max
+var hmax = 576;
+var wmax = 960;
+
+
+//variables de points d'origine de mise en page
+var pointox = Math.round(document.body.clientHeight / 6);
+var pointoy = Math.round((document.body.clientWidth / 2) - (wmax / 2))
+
+var hbmax = document.body.clientHeight; //hauteur max du body
+var wbmax = document.body.clientWidth; //largeur max du body
+
+//position de l'image menu
+document.body.style.fontSize = Math.round(hmax / 24);
+
+document.getElementById('imgtitle').style.position = 'absolute'
+document.getElementById('imgtitle').style.top = pointox;
+document.getElementById('imgtitle').style.left = pointoy;
+document.getElementById('imgtitle').style.width = wmax;
+document.getElementById('imgtitle').style.height = hmax;
+document.getElementById('imgtitle').style.zIndex = 5;
+
+document.getElementById('thenotice').style.opacity = 0;
+document.getElementById('thenotice').style.position = 'absolute'
+document.getElementById('thenotice').style.top = 35;
+document.getElementById('thenotice').style.left = pointoy;
+document.getElementById('thenotice').style.width = wmax;
+document.getElementById('thenotice').style.height = hmax;
+document.getElementById('thenotice').style.zIndex = 6;
+//document.getElementById('thenotice').style.display = 'none';
+//document.getElementById('thenotice').style.visibility = 'hidden';
+
+
+document.getElementById('presmenu').style.opacity = 0;
+document.getElementById('presmenu').style.position = 'absolute'
+document.getElementById('presmenu').style.top = 35;
+document.getElementById('presmenu').style.left = Math.round(pointoy + (wmax/2.5));
+document.getElementById('presmenu').style.width = Math.round(wmax / 4);
+document.getElementById('presmenu').style.height = Math.round(hmax / 4);
+document.getElementById('presmenu').style.zIndex = 7;
+
+//effet css3/js fx.css, ajaxmini2.js/:
+anni("imgtitle", "zoomapper", 'at');
+setTimeout('anni("presmenu", "apper", "at")', 1400);
+setTimeout('anni("thenotice", "apper", "at")', 2400);
+</script>
+</body>
+</html>

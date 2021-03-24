@@ -1,0 +1,212 @@
+
+<script language = 'javascript'>
+////////////////////////////////////////////////////////////////////
+
+
+//definition du niveau
+
+function niveau1bs()
+{
+
+ground = new Array();
+monster = new Array();
+piegea = new Array();
+
+specialvictTXT = new Array();
+specialvictButin = new Array();
+coffre = new Array();
+coffretrg = new Array();
+enchapter = new Array();
+cutscene = new Array();
+posjoueur = 'vh'
+
+
+//affichechapt("./ross/niv1/rchpt1-01.html")
+niveauname = 'niveau1b'
+graphcoul = "./vvdaimg/crypt/"
+graphexta= ".png";
+document.getElementById('couloir').src = graph;
+groundstop = 220;
+groundsup = 10;
+var radstop = 49;
+var radsup = 7;
+makeatables('carte', 'cartej', 'cell', 'cellj', groundstop, groundsup);
+makeatables('radar', 'radarj', 'cellrad', 'cellradj', radstop, radsup);
+lradar = 7;
+
+ground[192] = 'coul';
+
+ground[182] = 'coul';
+
+ground[172] = 'coul';
+
+ground[162] = 'coul';
+
+ground[163] = 'coul';
+
+ground[164] = 'coul';
+
+ground[165] = 'coul';
+
+ground[166] = 'coul';
+
+ground[167] = 'coul';
+
+ground[168] = 'coul';
+
+ground[153] = 'coul';
+
+ground[143] = 'coul';
+
+ground[133] = 'coul';
+
+ground[123] = 'coul';
+
+ground[122] = 'coul';
+
+ground[121] = 'coul';
+
+ground[101] = 'coul';
+
+ground[91] = 'coul';
+
+ground[81] = 'coul';
+
+ground[82] = 'coul';
+
+ground[83] = 'coul';
+
+ground[73] = 'coul';
+
+ground[63] = 'coul';
+
+ground[53] = 'coul';
+
+ground[178] = 'coul';
+
+ground[188] = 'coul';
+
+ground[158] = 'coul';
+
+ground[148] = 'coul';
+
+ground[138] = 'coul';
+
+ground[128] = 'coul';
+
+ground[118] = 'coul';
+
+ground[137] = 'coul';
+
+ground[125] = 'coul';
+
+ground[115] = 'coul';
+
+ground[105] = 'coul';
+
+ground[95] = 'coul';
+
+ground[96] = 'coul';
+
+ground[97] = 'coul';
+
+ground[87] = 'coul';
+
+ground[77] = 'coul';
+
+ground[67] = 'coul';
+
+ground[66] = 'coul';
+
+ground[65] = 'coul';
+
+ground[64] = 'coul';
+
+ground[43] = 'coul';
+
+ground[33] = 'coul';
+
+ground[23] = 'coul';
+
+piegea[143] = 'piegea';
+
+piegea[165] = 'piegea';
+
+piegea[148] = 'piegea';
+
+ground[111] = 'coul';
+
+ground[108] = 'coul';
+
+ground[98] = 'coul';
+
+ground[136] = 'coul';
+
+ground[126] = 'coul';
+
+monster[172] = 'zombie';
+
+monster[164] = 'zombie';
+
+monster[133] = 'rats';
+
+monster[121] = 'zombie';
+
+monster[178] = 'zombie';
+
+monster[128] = 'rats';
+
+monster[98] = 'zombie';
+
+monster[77] = 'zombie';
+
+monster[65] = 'zombie';
+
+monster[91] = 'zombie';
+
+monster[73] = 'zombie';
+
+cutscene[172] = './buck/niv1/zomb.htm';
+cutscene[162] = './buck/niv1/zombend.htm';
+ingame[33] = './buck/niv1/end.htm';
+//exit[33] = 'sortiea';
+
+coffre[188] = 'coffre';
+coffre[136] = 'coffre';
+
+specialvictTXT[188] = 'Des munitions... un peu short mitch.'
+specialvictButin[188] = '<br><a href="#" id="specia" onclick="gchgbonus = 8; rch(chgbonus); document.getElementById(' + "'specia'" + ' ).style.visibility = ' + "'hidden'" + '"> cartouches showgun acier</a><br>';
+
+specialvictTXT[136] = 'Des munitions... un peu short mitch.'
+specialvictButin[136] = '<br><a href="#" id="specia" onclick="gchgbonus = 8; rch(chgbonus); document.getElementById(' + "'specia'" + ' ).style.visibility = ' + "'hidden'" + '"> cartouches showgun acier</a><br>';
+
+
+//enchapter[40] = './ross/niv2/niveau2s.htm';
+
+
+casejoueur = 192;
+
+radarjoueur = 24;
+greenpos = 'cell' + casejoueur;
+jpos = 'cellj' + casejoueur;
+
+greenposR = 'cellrad' + radarjoueur;
+jposR = 'cellradj' + radarjoueur;
+
+document.getElementById(jpos).style.visibility = 'visible';
+document.getElementById(greenpos).src = zerofog.src;
+document.getElementById(jposR).style.visibility = 'visible';
+document.getElementById(greenposR).src = zerofog.src;
+
+
+avancefps();
+ctrlcoul();dtcoul();defcoul();
+
+
+}
+niveau1bs();
+ctrlcoul();
+preloadground()
+</script>
+
+

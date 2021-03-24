@@ -1,0 +1,18 @@
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>Opera<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Pour des raisons de securité les fonctionnalités ajax horligne dans Opera
+sont désactivés, pour jouer, il vous faudra les activer.
+
+"opera:config#UserPrefs|AllowFileXMLHttpRequest"
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>Chrome<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Pour des raisons de securité les fonctionnalités ajax horligne dans Chrome
+sont désactivés, pour jouer, il vous faudra les activer.
+Creer un raccourcie pour le logiciel Chrome et suiver la syntaxe suivante.
+chrome.exe --allow-file-access-from-files
+
+>>>>>>>>>>>>>>>>>>>>>bug<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+Sur Webkit (chrome, safarie) et en regle général, utiliser le fichier play.htm pour jouer sinon vous risquer de rencontrer des bugs

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>
+A Very Very Dark Affaires
+</title>
+<style type="text/css">
+#imgtitle {opacity:0};
+#presmenu {opacity:0};
+</style>
+<link rel="stylesheet" 
+href="./avvda/fx/fx.css" 
+type="text/css" id="stylefx">
+<link rel="stylesheet" 
+href="./avvda/avvda.css" 
+type="text/css" media="screen" id="stylebase" title="avvdabase">
+
+
+<script type="text/javascript" src="./avvda/fx/ajaxmi.js"></script>
+
+</head>
+<img src="./avvda/imgtitle.png" id="imgtitle"></img>
+
+<div id="presmenu">
+<a href ="./avvda/avvda.htm" id="jouer" class='pres'>Jouer</a>
+||
+<a href ="./avvda/notice.htm" id="notice" class='pres'>Notice</a>
+||
+<a href ="./avvda/option.htm" id="notice" class='pres'>Option</a>
+||
+<a href ="./avvda/credits.htm" id="credit" class='pres'>Credits</a>
+
+</div>
+<script type="text/javascript">
+
+//////////////:fonctions de mis en page//////////////////:
+
+//variable de taille max
+
+var hmax = 576;
+var wmax = 960;
+
+
+//variables de points d'origine de mise en page
+var pointox = Math.round(document.body.clientHeight / 6);
+var pointoy = Math.round((document.body.clientWidth / 2) - (wmax / 2))
+
+var hbmax = document.body.clientHeight; //hauteur max du body
+var wbmax = document.body.clientWidth; //largeur max du body
+
+//position de l'image menu
+document.body.style.fontSize = Math.round(hmax / 24);
+//document.getElementById('imgtitle').style.opacity = 0;
+
+document.getElementById('imgtitle').style.position =  'absolute';
+document.getElementById('imgtitle').style.top = pointox;
+document.getElementById('imgtitle').style.left = pointoy;
+document.getElementById('imgtitle').style.width = wmax;
+document.getElementById('imgtitle').style.height = hmax;
+document.getElementById('imgtitle').style.zIndex = 5;
+
+document.getElementById('presmenu').style.opacity = 0;
+document.getElementById('presmenu').style.position = 'absolute'
+document.getElementById('presmenu').style.top = Math.round(pointox + (hmax/1.5));
+document.getElementById('presmenu').style.left = Math.round(pointoy + (wmax/2.8));
+document.getElementById('presmenu').style.width = Math.round(wmax / 3);
+document.getElementById('presmenu').style.height = Math.round(hmax / 4);
+document.getElementById('presmenu').style.zIndex = 6;
+
+
+//effet css3/js fx.css, ajaxmini2.js/:
+document.getElementById('imgtitle').style.opacity = 1;
+anni("imgtitle","zoomapper","at");
+setTimeout('anni("presmenu", "apper", 3700)', 1400);
+</script>
