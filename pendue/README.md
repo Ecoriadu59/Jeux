@@ -1,2 +1,2 @@
 # test
-https://ecoriadu59.github.io/Jeux/
+https://ecoriadu59.github.io/Jeux/pendue
